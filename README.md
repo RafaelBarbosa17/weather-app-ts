@@ -3,9 +3,9 @@
 
 [Link para vizualização da página](https://63cffd84847e5a05f9bc0cb3--rafaelbarbosa17-weather-app-ts.netlify.app/)
 
-<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<div align="center">
     <img src="https://github.com/RafaelBarbosa17/weather-app-ts/blob/main/public/favicon.png?raw=true">
-    <h1> Weather APP </h1>
+    <h1 align="center"> Weather APP </h1>
 </div>
 
 > Esta logo foi desenvolvida por mim e está disponivel para uso.
