@@ -1,7 +1,7 @@
 
 >#### :construction: :hammer_and_wrench: Em desenvolvimento :construction:
 
-[Link para vizualização da página](https://63cffd84847e5a05f9bc0cb3--rafaelbarbosa17-weather-app-ts.netlify.app/)
+[Link para vizualização da página](https://rafaelbarbosa17-weather-app-ts.netlify.app/)
 
 <div align="center">
     <img src="https://github.com/RafaelBarbosa17/weather-app-ts/blob/main/public/favicon.png?raw=true">
