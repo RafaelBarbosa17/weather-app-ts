@@ -1,13 +1,14 @@
 
-import { styles, backgroundColorStyle } from "../backgroundScene";
+import { SunOrMoon } from './SunOrMoon';
 
 export const ClearMoon = () => {
-    backgroundColorStyle.backgroundColor = '#0a0b40'
-    backgroundColorStyle.backgroundImage = "url(./src/imgs/clearmoonsky.jpg)"
+    const backgroundColorStyle = {
+        backgroundColor: '#a6dcdc'
+    }
+
     return (
         <div className="ClearMoon scene-main" style={backgroundColorStyle}>
-            <div className="clear-moon-box" style={styles.moonBox}>
-            </div>
+            <SunOrMoon />
         </div>
     )
 }

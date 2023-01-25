@@ -1,38 +1,26 @@
 
 import './backgroundScene.css'
-import { defineScene } from '../Icon';
+// import { defineScene } from '../Icon';
 import { ClearSun } from './conditions/ClearSun';
 import { ClearMoon } from './conditions/ClearMoon';
 import { Thunderstorm } from './conditions/Thunderstorm';
 import { Drizzle } from './conditions/Drizzle';
+import { RainDay } from './conditions/Rain';
 
-let hour = new Date().getHours();
+export let hour = new Date().getHours();
 hour = 12
 
-export let backgroundColorStyle = {
-    backgroundColor: '',
-    backgroundImage: ''
-};
-
-export let styles:any = {
-    sunBox: {
-        height: '200px',
-        width: '200px',
-        transform: `rotate(${-(15 * hour + 180)}deg)`
-    },
-    moonBox: {
-        height: '200px',
-        width: '200px',
-        transform: `rotate(${-(15 * hour)}deg)`
-    }
+const defineScene = {
+    id: 500,
+    main: 'Rain'
 }
 
 export const Scene = () => {
-    
+
     const rainDefinition = () => {
         if (defineScene.id >= 500) {
             if (hour >= 6 && hour <= 18) {
-                return 'Chuva com Sol'
+                return <RainDay />
             } else {
                 return 'Chuva com Lua'
             }
@@ -71,9 +59,9 @@ export const Scene = () => {
 
     return (
         <div className="background-scene">
-            {groupWeatherConditions['Clear']}
+            {groupWeatherConditions['Rain']}
             <div className="scene-box">
-                <img className='scene-img' src="./imgs/cenario.png" alt="" />
+                <img className='scene-img' src="./imgs/cenario.svg" alt="" />
             </div>
         </div>
     )
