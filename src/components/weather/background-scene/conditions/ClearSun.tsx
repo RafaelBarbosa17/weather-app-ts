@@ -1,5 +1,6 @@
 
 import { SunOrMoon } from "./SunOrMoon";
+import '../backgroundScene.css';
 
 export const ClearSun = () => {
     const backgroundColorStyle = {

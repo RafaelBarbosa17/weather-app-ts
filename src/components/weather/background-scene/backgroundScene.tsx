@@ -5,36 +5,50 @@ import { ClearSun } from './conditions/ClearSun';
 import { ClearMoon } from './conditions/ClearMoon';
 import { Thunderstorm } from './conditions/Thunderstorm';
 import { Drizzle } from './conditions/Drizzle';
-import { RainDay } from './conditions/Rain';
+import { RainDaySun, RainNightMoon, RainDay, RainNight, RainSnowDay, RainSnowNight } from './conditions/Rain';
+import { CloudsSun } from './conditions/Clouds';
 
 export let hour = new Date().getHours();
-hour = 12
 
-const defineScene = {
-    id: 500,
-    main: 'Rain'
+interface DS {
+    id: number
+    main: string
 }
 
-export const Scene = () => {
+const defineScene:DS = {
+    id: 801,
+    main: 'Clouds'
+}
 
+
+
+export const Scene = () => {
     const rainDefinition = () => {
-        if (defineScene.id >= 500) {
+        if (defineScene.id >= 500 && defineScene.id < 520 && defineScene.id !== 511) {
+            if (hour >= 6 && hour <= 18) {
+                return <RainDaySun />
+            } else {
+                return <RainNightMoon />
+            }
+        } else if (defineScene.id === 511) {
+            if (hour >= 6 && hour <= 18) {
+                return <RainSnowDay />
+            } else {
+                return <RainSnowNight />
+            }
+        } else if (defineScene.id >= 520) {
             if (hour >= 6 && hour <= 18) {
                 return <RainDay />
             } else {
-                return 'Chuva com Lua'
+                return <RainNight />
             }
-        } else if (defineScene.id === 511) {
-            return 'Chuva de Neve'
-        } else if (defineScene.id >= 520) {
-            return 'Chuva'
         }
     }
     
     const cloudsDefinition = () => {
         if (defineScene.id === 801) {
             if (hour >= 6 && hour <= 18) {
-                return 'Sol com Nuvem'
+                return <CloudsSun />
             } else {
                 return 'Lua com Nuvem'
             }
@@ -53,15 +67,37 @@ export const Scene = () => {
         Snow: 'Neve',
         Clouds: cloudsDefinition()
     }
-
     //const w = document.body.clientWidth;
     //const h = document.body.clientHeight;
 
+let currentWeather;
+    switch (defineScene.main) {
+        case 'Clear':
+            currentWeather = groupWeatherConditions.Clear
+            break;
+        case 'Thunderstorm':
+            currentWeather = groupWeatherConditions.Thunderstorm
+            break;
+        case 'Drizzle':
+            currentWeather = groupWeatherConditions.Drizzle
+            break;
+        case 'Rain':
+            currentWeather = groupWeatherConditions.Rain
+            break;
+        case 'Snow':
+            currentWeather = groupWeatherConditions.Snow
+            break;
+        case 'Clouds':
+            currentWeather = groupWeatherConditions.Clouds
+            break;
+    }
+    //console.log(typeof currentWeather)
+
     return (
         <div className="background-scene">
-            {groupWeatherConditions['Rain']}
+            {currentWeather}
             <div className="scene-box">
-                <img className='scene-img' src="./imgs/cenario.svg" alt="" />
+                <img className='scene-img' src="./imgs/cenario.png" alt="" />
             </div>
         </div>
     )

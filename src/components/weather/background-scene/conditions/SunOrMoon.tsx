@@ -15,16 +15,23 @@ export const SunOrMoon = () => {
     useEffect(() => {
         updateHour()
     }, [])
+    //let hour = 22
+    //let min = 30
 
-    const styleSoM = {
+    const styleS = {
         width: '200px',
         height: '200px',
         transform: `rotate(${-(15 * hour + 180 + (min * 15 / 60))}deg)`
     }
+    const styleM = {
+        width: '200px',
+        height: '200px',
+        transform: `rotate(${-(15 * hour + (min * 15 / 60))}deg)`
+    }
     return (
         <div 
             className={hour <= 18 && hour >= 6 ? 'clear-sun-box' : 'clear-moon-box'} 
-            style={styleSoM}
+            style={hour <= 18 && hour >= 6 ? styleS : styleM}
         ></div>
     )
 }

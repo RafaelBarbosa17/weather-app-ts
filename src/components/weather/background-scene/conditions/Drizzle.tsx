@@ -1,6 +1,6 @@
 
 import { hour } from "../backgroundScene";
-
+import '../backgroundScene.css';
 
 let backgroundColorStyle = {
     backgroundColor: '',
