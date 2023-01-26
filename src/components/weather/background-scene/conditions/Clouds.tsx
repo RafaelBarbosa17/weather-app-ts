@@ -2,7 +2,6 @@
 import { SunOrMoon } from "./SunOrMoon"
 
 const Clouds = () => {
-    const h = document.body.clientHeight - 250;
     const cloudEffect = () => {
         const top = Math.random() * 8 * 10;
         const width = (Math.random() * (400 - 250) + 250);
