@@ -23,7 +23,7 @@
     position: absolute;
     bottom: -60px;
     min-width: 1000px;
-    width: 100%;
+    width: 105%;
     overflow: hidden;
     z-index: 4;
 }
@@ -38,7 +38,6 @@
     align-items: center;
     justify-content: flex-end;
     overflow: hidden;
-    background-color: #b8d2da;
 }
 
 @media screen and (max-width: 600px) {
@@ -188,13 +187,7 @@
     background-color: #ffffff32;
 }
 .rain-effects.night {
-    background-color: #45444451;
-}
-.rain-effects.day {
-    background-color: #9eaaab75;
-}
-.rain-effects.night {
-    background-color: #ffffff74;
+    background-color: #2423237d;
 }
 .rain-effects.snowday {
     background-color: #ffffff3c;
@@ -224,6 +217,10 @@
     height: 8px;
     background-color: #3a3a3a;
     filter: blur(2px);
+}
+
+.rain-effect.night {
+    background-color: #43605f;
 }
 
 

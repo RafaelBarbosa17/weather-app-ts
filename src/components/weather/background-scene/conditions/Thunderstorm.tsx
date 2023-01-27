@@ -1,6 +1,7 @@
 
-import { hour } from "../backgroundScene";
 import '../backgroundScene.css';
+
+let hour = new Date().getHours()
 
 let backgroundColorStyle = {
     backgroundColor: '',

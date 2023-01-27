@@ -13,15 +13,8 @@ interface WeatherIcon {
     icon: WeatherData
 }
 
-export let defineScene:any = {
-    
-};
-
-// busca o clima atual e define para o valor da variavel 'iconWeather' como um componente React
-
 export const Icon = ({ icon }:WeatherIcon) => {
     let hour = new Date().getHours();
-    // let hour = 5;
     let weatherIcon;
 
     const rainDefinition = () => {
@@ -63,11 +56,6 @@ export const Icon = ({ icon }:WeatherIcon) => {
 
     weatherIcon = (groupWeatherConditions as any)[icon.main];
     // console.log(icon.main)
-
-    defineScene = {
-        id: icon.id,
-        main: icon.main
-    }
 
     return <div className='weather-icon'> {weatherIcon} </div>
 }

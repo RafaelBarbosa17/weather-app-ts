@@ -1,11 +1,12 @@
 
-import { hour } from "../backgroundScene";
 import '../backgroundScene.css';
 
 let backgroundColorStyle = {
     backgroundColor: '',
     backgroundImage: ''
 };
+
+let hour = new Date().getHours()
 
 export const Drizzle = () => {
     backgroundColorStyle.backgroundColor = hour >= 6 && hour <= 18 ? "#a1a1a1" : '#000000' 

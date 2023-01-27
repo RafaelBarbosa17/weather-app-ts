@@ -15,8 +15,6 @@ export const SunOrMoon = () => {
     useEffect(() => {
         updateHour()
     }, [])
-    //let hour = 22
-    //let min = 30
 
     const styleS = {
         width: '200px',

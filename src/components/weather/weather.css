@@ -1,11 +1,15 @@
 
 .Weather {
     margin: 30px auto;
-    height: 80px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     z-index: 10;
+    background-color: #ffffff81;
+    box-shadow: 3px 3px 10px 1px #00000093;
+    border-radius: 30px;
+    padding: 20px;
+    height: max-content;
 }
 
 .weather-box {
@@ -19,6 +23,18 @@
     z-index: 1;
     /* animation: rotate 10s infinite linear; */
     fill: black;
+}
+
+.weather-description {
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+}
+
+.weather-hour {
+    text-align: center;
+    font-size: large;
 }
 
 .sun {

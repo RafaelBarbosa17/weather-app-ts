@@ -7,7 +7,7 @@ const w = document.body.clientWidth + 100;
 const RainEffect = (prop: { time: string, tp: string }) => {
     const rainStyleEffect = () => {
     const pos = (Math.random() * w) - 100;
-    const time = prop.tp === 'rain' ? (Math.random() * (6 - 2) + 2) : (Math.random() * (10 - 5) + 5);
+    const time = prop.tp === 'rain' ? (Math.random() * (4 - 1) + 1) : (Math.random() * (10 - 5) + 5);
         return {
             left: `${pos}px`,
             animation: `drop ${time}s linear infinite`
