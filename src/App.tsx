@@ -1,6 +1,6 @@
 
 import { Weather } from './components/weather/weather';
-import { Clock } from './components/weather/clock';
+import { Clock } from './components/clock/clock';
 import './index.css'
 
 // Component principal do aplicativo;

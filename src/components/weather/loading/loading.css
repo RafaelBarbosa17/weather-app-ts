@@ -14,7 +14,7 @@
     height: 50%;
     margin: auto;
     border-radius: 50%;
-    animation: rotate 4s linear infinite;
+    animation: rotate-icon 4s linear infinite;
     fill: orange;
     stroke: black;
     stroke-width: 0.3px;

@@ -1,0 +1,173 @@
+
+.clock-container {
+    margin: 30px auto;
+    z-index: 10;
+    padding: 10px;
+    background-color: #ffffff81;
+    border-radius: 30px;
+    box-shadow: 3px 3px 10px 1px #00000093;
+    height: max-content;
+}
+
+.clock-box {
+    margin: 10px auto;
+}
+
+.clock-box, .clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+}
+
+.h, .m, .s {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.h::after, .m::after, .s::after {
+    content: '';
+    position: absolute;
+    border-radius: 30px;
+    background-color: white;
+    border: solid 1px black;
+}
+
+.h::after {
+    /* background-color: red; */
+    width: 30px;
+    height: 5px;
+}
+
+.m::after {
+    /* background-color: green; */
+    width: 45px;
+    height: 4px;
+}
+
+.s::after {
+    /* background-color: blue; */
+    width: 55px;
+    height: 2px;
+}
+
+.numbers {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.numbers span {
+    position: absolute;
+    color: white;
+    height: 150px;
+    padding: 5px;
+    display: flex;
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+}
+
+.format-hour {
+    text-align: center;
+    margin: auto;
+}
+
+.format-hour span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.numbers span b {
+    display: inline-block;
+}
+
+.numbers span:nth-child(1) b {
+    transform: rotate(0deg);
+}
+.numbers span:nth-child(2) b {
+    transform: rotate(-30deg);
+}
+.numbers span:nth-child(3) b {
+    transform: rotate(-60deg);
+}
+.numbers span:nth-child(4) b {
+    transform: rotate(-90deg);
+}
+.numbers span:nth-child(5) b {
+    transform: rotate(-120deg);
+}
+.numbers span:nth-child(6) b {
+    transform: rotate(-150deg);
+}
+.numbers span:nth-child(7) b {
+    transform: rotate(-180deg);
+}
+.numbers span:nth-child(8) b {
+    transform: rotate(-210deg);
+}
+.numbers span:nth-child(9) b {
+    transform: rotate(-240deg);
+}
+.numbers span:nth-child(10) b {
+    transform: rotate(-270deg);
+}
+.numbers span:nth-child(11) b {
+    transform: rotate(-300deg);
+}
+.numbers span:nth-child(12) b {
+    transform: rotate(-330deg);
+}
+
+.numbers span:nth-child(1) {
+    transform: rotate(0deg);
+}
+.numbers span:nth-child(2) {
+    transform: rotate(30deg);
+}
+.numbers span:nth-child(3) {
+    transform: rotate(60deg);
+}
+.numbers span:nth-child(4) {
+    transform: rotate(90deg);
+}
+.numbers span:nth-child(5) {
+    transform: rotate(120deg);
+}
+.numbers span:nth-child(6) {
+    transform: rotate(150deg);
+}
+.numbers span:nth-child(7) {
+    transform: rotate(180deg);
+}
+.numbers span:nth-child(8) {
+    transform: rotate(210deg);
+}
+.numbers span:nth-child(9) {
+    transform: rotate(240deg);
+}
+.numbers span:nth-child(10) {
+    transform: rotate(270deg);
+}
+.numbers span:nth-child(11) {
+    transform: rotate(300deg);
+}
+.numbers span:nth-child(12) {
+    transform: rotate(330deg);
+}
+

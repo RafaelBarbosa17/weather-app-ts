@@ -1,10 +1,10 @@
 
->#### :construction: :hammer_and_wrench: Em desenvolvimento :construction:
+>#### :heart: Primeira versão finalizada v1.0
 
 [Link para vizualização da página](https://rafaelbarbosa17-weather-app-ts.netlify.app/)
 
 <div align="center">
-    <img src="https://github.com/RafaelBarbosa17/weather-app-ts/blob/main/public/favicon.png?raw=true">
+    <img src="./public/favicon.svg">
     <h1 align="center"> Weather APP </h1>
 </div>
 
@@ -12,4 +12,4 @@
 
 ![](https://img.shields.io/badge/-TypeScript-blue) ![](https://img.shields.io/badge/-React-blue) ![](https://img.shields.io/badge/-CSS-informational) ![](https://img.shields.io/badge/-OpenWeatherApi-orange) ![](https://img.shields.io/badge/-React%20Icons-blueviolet)
 
-Este é um aplicativo simples que utiliza uma API de clima, a [OpenWeatherMap API](https://openweathermap.org/api), o aplicativo mostra o clima atual de acordo com sua localização e também exibe a hora com um relógio bem legal que eu desenvolvi.
+Este é um aplicativo simples que utiliza uma API de clima, a [OpenWeatherMap API](https://openweathermap.org/api), o aplicativo mostra o clima atual de acordo com sua localização e também exibe a hora com um relógio funcional, agora o aplicativo também é capaz de gerar cenarios de acordo com o clima e a hora o aplicativo é capaz de posicionar o sol de acordo com a hora do dia, gerar nuvens, relampagos e até mesmo a chuva e a neve.

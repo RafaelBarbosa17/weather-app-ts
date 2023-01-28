@@ -32,28 +32,45 @@
     font-size: large;
 }
 
+.weather-hour-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    gap: 10px;
+    margin: 10px auto 0px;
+}
+
 .weather-hour {
     text-align: center;
-    font-size: large;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
-.sun {
-    animation: rotate 10s infinite linear;
+.reload-weather {
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
 }
 
-.moon {
-    animation: movemoon 5s infinite ease-in-out;
+.sun-icon {
+    animation: rotate-icon 10s infinite linear;
 }
 
-.cloud {
-    animation: cloud 5s infinite ease-in-out;
+.moon-icon {
+    animation: movemoon-icon 5s infinite ease-in-out;
 }
 
-.snow {
-    animation: rotate 20s infinite linear;
+.cloud-icon {
+    animation: cloud-icon 5s infinite ease-in-out;
 }
 
-@keyframes cloud {
+.snow-icon {
+    animation: rotate-icon 20s infinite linear;
+}
+
+@keyframes cloud-icon {
     0% {
         transform: translateY(0px);
     }
@@ -65,19 +82,19 @@
     }
 }
 
-@keyframes movemoon {
+@keyframes movemoon-icon {
     0% {
-        transform: rotate(-10deg);
+        transform: rotate(-5deg);
     }
     50% {
-        transform: rotate(10deg);
+        transform: rotate(5deg);
     }
     100% {
-        transform: rotate(-10deg);
+        transform: rotate(-5deg);
     }
 }
 
-@keyframes rotate {
+@keyframes rotate-icon {
     0% {
         transform: rotate(0deg);
     }
