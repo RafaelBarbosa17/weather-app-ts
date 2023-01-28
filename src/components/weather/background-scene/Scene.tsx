@@ -1,5 +1,5 @@
 
-import './backgroundScene.css'
+import './Scene.css'
 import { ClearSun } from './conditions/ClearSun';
 import { ClearMoon } from './conditions/ClearMoon';
 import { Thunderstorm } from './conditions/Thunderstorm';
