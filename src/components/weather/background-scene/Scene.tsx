@@ -8,6 +8,7 @@ import { RainDaySun, RainNightMoon, RainDay, RainNight, RainSnowDay, RainSnowNig
 import { CloudsMoon, CloudsMoonHeavy, CloudsMoonLight, CloudsSun, CloudsSunHeavy, CloudsSunLight } from './conditions/Clouds';
 import { Snow } from './conditions/Snow';
 import { useEffect, useState } from 'react';
+import { SceneImg } from './Scene-Image/SceneImage';
 
 // tipagem
 interface Data {
@@ -90,7 +91,8 @@ export const Scene = (prop: {data: Data}) => {
         <div className="background-scene">
             {currentWeather}
             <div className="scene-box">
-                <img className='scene-img' src="./imgs/cenario.svg" alt="" />
+                <SceneImg />
+                {/* <img className='scene-img' src="./imgs/cenario.svg" alt="cenario" /> */}
             </div>
         </div>
     )

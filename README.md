@@ -4,7 +4,7 @@
 [Link para vizualização da página](https://rafaelbarbosa17-weather-app-ts.netlify.app/)
 
 <div align="center">
-    <img src="./public/favicon-192.svg">
+    <img src="./public/icons/favicon-192.svg">
     <h1 align="center"> Weather APP </h1>
 </div>
 

@@ -4,32 +4,32 @@
   "description": "Um aplicativo Web que busca e mostra condições de clima atuais",
   "icons": [
     {
-      "src": "favicon-16.svg",
+      "src": "./icon/favicon-16.svg",
       "sizes": "16x16",
       "type": "image/svg+xml"
     },
     {
-      "src": "favicon-24.svg",
+      "src": "./icon/favicon-24.svg",
       "sizes": "24x24",
       "type": "image/svg+xml"
     },
     {
-      "src": "favicon-32.svg",
+      "src": "./icon/favicon-32.svg",
       "sizes": "32x32",
       "type": "image/svg+xml"
     },
     {
-      "src": "favicon-64.svg",
+      "src": "./icon/favicon-64.svg",
       "sizes": "64x64",
       "type": "image/svg+xml"
     },
     {
-      "src": "favicon-192.svg",
+      "src": "./icon/favicon-192.svg",
       "type": "image/svg+xml",
       "sizes": "192x192"
     },
     {
-      "src": "favicon-512.svg",
+      "src": "./icon/favicon-512.svg",
       "type": "image/svg+xml",
       "sizes": "512x512"
     }
