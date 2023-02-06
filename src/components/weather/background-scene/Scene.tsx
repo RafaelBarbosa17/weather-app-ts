@@ -29,26 +29,23 @@ export const Scene = (prop: {data: Data}) => {
         updateHour()
     }, [])
     
-    console.log(prop.data)
+    //console.log(prop.data)
     const rainDefinition = () => {
         if (prop.data.id >= 500 && prop.data.id < 520 && prop.data.id !== 511) {
             if (hour >= 6 && hour <= 18) {
                 return <RainDaySun />
-            } else {
-                return <RainNightMoon />
             }
+            return <RainNightMoon />
         } else if (prop.data.id === 511) {
             if (hour >= 6 && hour <= 18) {
                 return <RainSnowDay />
-            } else {
-                return <RainSnowNight />
             }
+            return <RainSnowNight />
         } else if (prop.data.id >= 520) {
             if (hour >= 6 && hour <= 18) {
                 return <RainDay />
-            } else {
-                return <RainNight />
             }
+            return <RainNight />
         }
     }
     
@@ -56,23 +53,19 @@ export const Scene = (prop: {data: Data}) => {
         if (prop.data.id === 801) {
             if (hour >= 6 && hour <= 18) {
                 return <CloudsSun />
-            } else {
-                return <CloudsMoon />
             }
+            return <CloudsMoon />
         } else if (prop.data.id === 802) {
             if (hour >= 6 && hour <= 18) {
                 return <CloudsSunLight />
-            } else {
-                return <CloudsMoonLight />
             }
+            return <CloudsMoonLight />
             // return 'Nuvem Leve'
         } else if (prop.data.id === 803 || prop.data.id === 804) {
             if (hour >= 6 && hour <= 18) {
                 return <CloudsSunHeavy />
-            } else {
-                return <CloudsMoonHeavy />
             }
-            //return 'Nuvem Pesada'
+            return <CloudsMoonHeavy />
         }
     }
     

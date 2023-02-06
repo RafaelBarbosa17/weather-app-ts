@@ -24,9 +24,8 @@ export const Icon = ({ icon }:WeatherIcon) => {
         if (icon.id >= 500 && icon.id < 520 && icon.id !== 511) {
             if (hour >= 6 && hour <= 18) {
                 return <WiDayRainMix/>
-            } else {
-                return <WiNightAltRainMix/>
             }
+            return <WiNightAltRainMix/>
         } else if (icon.id === 511) {
             return <WiSnowWind/>
         } else if (icon.id >= 520) {
@@ -38,9 +37,8 @@ export const Icon = ({ icon }:WeatherIcon) => {
         if (icon.id === 801) {
             if (hour >= 6 && hour <= 18) {
                 return <BsCloudSun/>
-            } else {
-                return <BsCloudMoon/>
             }
+            return <BsCloudMoon/>
         } else if (icon.id === 802) {
             return <BsCloud/>
         } else if (icon.id === 803 || icon.id === 804) {
