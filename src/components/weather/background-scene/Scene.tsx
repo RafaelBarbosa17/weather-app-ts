@@ -48,7 +48,7 @@ export const Scene = (prop: {data: Data}) => {
             return <RainNight />
         }
     }
-    
+
     const cloudsDefinition = () => {
         if (prop.data.id === 801) {
             if (hour >= 6 && hour <= 18) {

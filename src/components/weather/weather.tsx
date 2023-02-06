@@ -17,16 +17,16 @@ interface HourDate {
     hour: number,
     min: number
 }
-interface SunsetAndSunrise {
-    sunrise: number
-    sunset: number
-}
-interface Data {
-    main: WeatherMain
-    name: string
-    weather: WeatherData
-    sys: SunsetAndSunrise
-}
+// interface SunsetAndSunrise {
+//     sunrise: number
+//     sunset: number
+// }
+// interface Data {
+//     main: WeatherMain
+//     name: string
+//     weather: WeatherData
+//     sys: SunsetAndSunrise
+// }
 
 // chave da api
 const apiKey:string = (process.env.REACT_APP_SECRET_API_KEY as string)
@@ -35,7 +35,7 @@ export const Weather = () => {
     const [loading, setLoading] = useState(true);
     const [weatherData, setWeatherData] = useState<WeatherData>({} as WeatherData);
     const [tempWeather, setTempWeather] = useState<WeatherMain>({} as WeatherMain);
-    const [sunRiseAndSet, setSunRiseAndSet] = useState<SunsetAndSunrise>({} as SunsetAndSunrise)
+    //const [sunRiseAndSet, setSunRiseAndSet] = useState<SunsetAndSunrise>({} as SunsetAndSunrise)
     const [weatherIcon, setWeatherIcon] = useState({} as WeatherData);
     const [hourDate, setHourDate] = useState<HourDate>({} as HourDate);
 
@@ -63,10 +63,10 @@ export const Weather = () => {
             hour: new Date().getHours(),
             min: new Date().getMinutes()
         })
-        setSunRiseAndSet({
-            sunrise: data.sys.sunrise,
-            sunset: data.sys.sunset
-        })
+        // setSunRiseAndSet({
+        //     sunrise: data.sys.sunrise,
+        //     sunset: data.sys.sunset
+        // })
         //console.log(weatherData)
         setLoading(false)
     }
