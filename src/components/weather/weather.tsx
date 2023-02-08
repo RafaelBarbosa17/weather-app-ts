@@ -126,6 +126,7 @@ export const Weather = () => {
                                 </svg>
                             </button>
                         </div>
+                        <span>Em manutenção</span>
                 </div>
             }
             <Scene data={weatherData}/>
