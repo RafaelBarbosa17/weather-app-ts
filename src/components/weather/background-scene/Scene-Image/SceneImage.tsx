@@ -38,10 +38,10 @@ export const SceneImg = (props: {weatherCondition: string}) => {
         backgroundImg = <img className='scene-img' src="./imgs/cenario-grande.svg" alt="ceraio de fundo" />
     }
     else if (widthScreen <= 1000 && widthScreen > 425) {
-        backgroundImg = <img className='scene-img' src="./imgs/cenario.svg" alt="" />
+        backgroundImg = <img className='scene-img' src="./imgs/cenario.svg" alt="ceraio de fundo" />
     }
     else if (widthScreen <= 425) {
-        backgroundImg = <img className='scene-img-little' src='./imgs/cenario-pequeno.svg' />
+        backgroundImg = <img className='scene-img-little' src='./imgs/cenario-pequeno.svg' alt="ceraio de fundo" />
     }
 
     return (
