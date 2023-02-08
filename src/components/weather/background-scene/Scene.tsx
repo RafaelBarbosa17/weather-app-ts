@@ -84,7 +84,7 @@ export const Scene = (prop: {data: Data}) => {
         <div className="background-scene">
             {currentWeather}
             <div className="scene-box">
-                <SceneImg />
+                <SceneImg weatherCondition={prop.data.main} />
                 {/* <img className='scene-img' src="./imgs/cenario.svg" alt="cenario" /> */}
             </div>
         </div>

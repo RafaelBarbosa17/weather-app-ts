@@ -21,9 +21,18 @@
 
 .scene-img {
     position: absolute;
-    bottom: -60px;
-    min-width: 1000px;
-    width: 105%;
+    bottom: 0px;
+    min-width: 650px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    z-index: 4;
+}
+.scene-img-little {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
     overflow: hidden;
     z-index: 4;
 }

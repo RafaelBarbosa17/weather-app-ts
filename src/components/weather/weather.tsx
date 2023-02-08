@@ -49,9 +49,12 @@ export const Weather = () => {
         console.log(data)
         data.weather.map((obj: Pick<WeatherData, "main" | "description" | "id">) => {
             setWeatherData({
-                main: obj.main,
-                description: obj.description,
-                id: obj.id
+                // main: obj.main,
+                // description: obj.description,
+                // id: obj.id
+                main: 'Clear',
+                description: 'Limpo',
+                id: 0
             })
             return obj
         })
