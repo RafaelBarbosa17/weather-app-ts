@@ -7,7 +7,6 @@ import { Drizzle } from './conditions/Drizzle';
 import { RainDaySun, RainNightMoon, RainDay, RainNight, RainSnowDay, RainSnowNight } from './conditions/Rain';
 import { CloudsMoon, CloudsMoonHeavy, CloudsMoonLight, CloudsSun, CloudsSunHeavy, CloudsSunLight } from './conditions/Clouds';
 import { Snow } from './conditions/Snow';
-import { useEffect, useState } from 'react';
 import { SceneImg } from './Scene-Image/SceneImage';
 
 // tipagem
@@ -17,32 +16,21 @@ interface Data {
 }
 
 // o componente Scene tem praticamente as mesma função que o componente Icons porém Scene gera cerios de acordo com o clima atual e o horário
-export const Scene = (prop: {data: Data}) => {
-    const [hour, setHour] = useState(new Date().getHours())
-    const updateHour = () => {
-        setInterval(() => {
-            setHour(new Date().getHours())
-        }, 60000)
-    }
-
-    useEffect(() => {
-        updateHour()
-    }, [])
-    
+export const Scene = (prop: {data: Data, day: boolean}) => {
     //console.log(prop.data)
     const rainDefinition = () => {
         if (prop.data.id >= 500 && prop.data.id < 520 && prop.data.id !== 511) {
-            if (hour >= 6 && hour <= 18) {
+            if (prop.day) {
                 return <RainDaySun />
             }
             return <RainNightMoon />
         } else if (prop.data.id === 511) {
-            if (hour >= 6 && hour <= 18) {
+            if (prop.day) {
                 return <RainSnowDay />
             }
             return <RainSnowNight />
         } else if (prop.data.id >= 520) {
-            if (hour >= 6 && hour <= 18) {
+            if (prop.day) {
                 return <RainDay />
             }
             return <RainNight />
@@ -51,18 +39,18 @@ export const Scene = (prop: {data: Data}) => {
 
     const cloudsDefinition = () => {
         if (prop.data.id === 801) {
-            if (hour >= 6 && hour <= 18) {
+            if (prop.day) {
                 return <CloudsSun />
             }
             return <CloudsMoon />
         } else if (prop.data.id === 802) {
-            if (hour >= 6 && hour <= 18) {
+            if (prop.day) {
                 return <CloudsSunLight />
             }
             return <CloudsMoonLight />
             // return 'Nuvem Leve'
         } else if (prop.data.id === 803 || prop.data.id === 804) {
-            if (hour >= 6 && hour <= 18) {
+            if (prop.day) {
                 return <CloudsSunHeavy />
             }
             return <CloudsMoonHeavy />
@@ -70,9 +58,9 @@ export const Scene = (prop: {data: Data}) => {
     }
     
     const groupWeatherConditions = {
-        Clear: hour >= 6 && hour <= 18 ? <ClearSun /> : <ClearMoon />,
-        Thunderstorm: <Thunderstorm />,
-        Drizzle: <Drizzle />,
+        Clear: prop.day ? <ClearSun /> : <ClearMoon />,
+        Thunderstorm: <Thunderstorm day={prop.day} />,
+        Drizzle: <Drizzle day={prop.day} />,
         Rain: rainDefinition(),
         Snow: <Snow />,
         Clouds: cloudsDefinition()

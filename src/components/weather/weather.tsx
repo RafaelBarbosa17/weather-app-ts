@@ -4,6 +4,7 @@ import { Loading } from './loading/loading';
 import { Icon } from './Icon';
 import { Scene } from './background-scene/Scene';
 import './weather.css'
+import { dayOrNight } from './DayOrNight';
 
 interface WeatherData {
     main: string;
@@ -17,25 +18,21 @@ interface HourDate {
     hour: number,
     min: number
 }
-// interface SunsetAndSunrise {
-//     sunrise: number
-//     sunset: number
-// }
-// interface Data {
-//     main: WeatherMain
-//     name: string
-//     weather: WeatherData
-//     sys: SunsetAndSunrise
-// }
+interface SunsetAndSunrise {
+    sunrise: number
+    sunset: number
+}
 
 // chave da api
 const apiKey:string = (process.env.REACT_APP_SECRET_API_KEY as string)
+
+export let formatedSunRiseAndSet: any;
 
 export const Weather = () => {
     const [loading, setLoading] = useState(true);
     const [weatherData, setWeatherData] = useState<WeatherData>({} as WeatherData);
     const [tempWeather, setTempWeather] = useState<WeatherMain>({} as WeatherMain);
-    //const [sunRiseAndSet, setSunRiseAndSet] = useState<SunsetAndSunrise>({} as SunsetAndSunrise)
+    const [sunRiseAndSet, setSunRiseAndSet] = useState<SunsetAndSunrise>({} as SunsetAndSunrise)
     const [weatherIcon, setWeatherIcon] = useState({} as WeatherData);
     const [hourDate, setHourDate] = useState<HourDate>({} as HourDate);
 
@@ -46,15 +43,15 @@ export const Weather = () => {
         const data = await response.json();
         // dataMain é igual a propriedade main de data
         const dataMain = data.main as WeatherMain;
-        console.log(data)
+        //console.log(data)
         data.weather.map((obj: Pick<WeatherData, "main" | "description" | "id">) => {
             setWeatherData({
-                // main: obj.main,
-                // description: obj.description,
-                // id: obj.id
-                main: 'Clear',
-                description: 'Limpo',
-                id: 0
+                main: obj.main,
+                description: obj.description,
+                id: obj.id
+                // main: 'Clear',
+                // description: 'Limpo',
+                // id: 0
             })
             return obj
         })
@@ -66,10 +63,10 @@ export const Weather = () => {
             hour: new Date().getHours(),
             min: new Date().getMinutes()
         })
-        // setSunRiseAndSet({
-        //     sunrise: data.sys.sunrise,
-        //     sunset: data.sys.sunset
-        // })
+        setSunRiseAndSet({
+            sunrise: data.sys.sunrise,
+            sunset: data.sys.sunset
+        })
         //console.log(weatherData)
         setLoading(false)
     }
@@ -97,6 +94,17 @@ export const Weather = () => {
 
     // transforma a temperatura em graus celsius
     let temperatura = Math.round(tempWeather.temp - 273.15);
+    let sunrise = new Date(sunRiseAndSet.sunrise * 1000);
+    let sunset = new Date(sunRiseAndSet.sunset * 1000);
+
+    formatedSunRiseAndSet = {
+        sunriseHour: sunrise.getHours(),
+        sunriseMin: sunrise.getMinutes(),
+        sunsetHour: sunset.getHours(),
+        sunsetMin: sunset.getMinutes(),
+    }
+
+    //console.log(dayOrNight(formatedSunRiseAndSet))
 
     // retorna um icone de loading caso a variavel loanding seja verdadeiro
     return (
@@ -108,7 +116,7 @@ export const Weather = () => {
 
                 <div className="Weather">
                     <div className="weather-box">
-                            <Icon icon={weatherIcon} />
+                            <Icon icon={weatherIcon} day={dayOrNight(formatedSunRiseAndSet)} />
                             <h1 className="weather"> {temperatura} </h1>
                             <span>ºC</span>
                         </div>
@@ -126,10 +134,11 @@ export const Weather = () => {
                                 </svg>
                             </button>
                         </div>
-                        <span>Em manutenção</span>
+                        {/* <span>Em manutenção</span> */}
                 </div>
             }
-            <Scene data={weatherData}/>
+            <Scene data={weatherData} day={dayOrNight(formatedSunRiseAndSet)} />
+
         </>
     )
 }

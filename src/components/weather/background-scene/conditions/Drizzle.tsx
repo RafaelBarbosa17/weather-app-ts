@@ -1,7 +1,7 @@
 
 // gera um cenário com tempo nublado e uma chuva fraca ou garoa como chamado em alguns lugares
 // 
-export const Drizzle = () => {
+export const Drizzle = (prop: {day: boolean}) => {
     let backgroundColorStyle = {
         backgroundColor: '',
     };

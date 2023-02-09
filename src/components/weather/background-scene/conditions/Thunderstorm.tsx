@@ -1,6 +1,6 @@
 
 // componente que gera um cenário com trovões
-export const Thunderstorm = () => {
+export const Thunderstorm = (prop: {day: boolean}) => {
     let hour = new Date().getHours()
     let backgroundColorStyle = {
         backgroundColor: '',

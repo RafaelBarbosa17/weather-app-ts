@@ -1,5 +1,5 @@
 
->#### :heart: Primeira versão finalizada v1.0
+>#### :heart: Primeira versão finalizada v1.2
 
 [Link para vizualização da página](https://rafaelbarbosa17-weather-app-ts.netlify.app/)
 
