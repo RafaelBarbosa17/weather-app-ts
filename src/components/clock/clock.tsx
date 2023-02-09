@@ -39,7 +39,7 @@ export const Clock = () => {
     }
     // retorno do componente
     return (
-        <div className="clock-container">
+        <div className="Clock">
             <div className="clock-box">
                 <div className="clock">
                     <div className="s" style={{ transform: `rotate(${6 * sec + 270}deg)` }}></div>

@@ -1,6 +1,6 @@
 
-.clock-container {
-    margin: 30px auto;
+.Clock {
+    margin: 10px;
     z-index: 10;
     padding: 10px;
     background-color: #ffffff81;

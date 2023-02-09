@@ -1,6 +1,6 @@
 
 .Weather {
-    margin: 30px auto;
+    margin: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -14,7 +14,7 @@
 
 .weather-box {
     display: flex;
-    align-items: baseline;
+    justify-content: center;
 }
 
 .weather-icon svg {
@@ -23,6 +23,15 @@
     z-index: 1;
     /* animation: rotate 10s infinite linear; */
     fill: black;
+}
+
+.weather-degress {
+    display: flex;
+    align-items: center;
+}
+.degress {
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .weather-description {

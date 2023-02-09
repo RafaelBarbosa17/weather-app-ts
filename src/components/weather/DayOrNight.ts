@@ -15,7 +15,7 @@ export const dayOrNight = (sas: SAS) => {
         let intervalID = setInterval(() => {
             hour = new Date().getHours();
             min = new Date().getMinutes()
-        })
+        }, 60000)
         clearInterval(intervalID)
     }
 

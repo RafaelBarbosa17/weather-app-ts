@@ -43,15 +43,15 @@ export const Weather = () => {
         const data = await response.json();
         // dataMain é igual a propriedade main de data
         const dataMain = data.main as WeatherMain;
-        //console.log(data)
+        console.log(data)
         data.weather.map((obj: Pick<WeatherData, "main" | "description" | "id">) => {
             setWeatherData({
                 main: obj.main,
                 description: obj.description,
                 id: obj.id
-                // main: 'Clear',
-                // description: 'Limpo',
-                // id: 0
+                // main: 'Rain',
+                // description: 'Chovendo pacarai',
+                // id: 520
             })
             return obj
         })
@@ -116,25 +116,27 @@ export const Weather = () => {
 
                 <div className="Weather">
                     <div className="weather-box">
-                            <Icon icon={weatherIcon} day={dayOrNight(formatedSunRiseAndSet)} />
+                        <Icon icon={weatherIcon} day={dayOrNight(formatedSunRiseAndSet)} />
+                        <div className="weather-degress">
                             <h1 className="weather"> {temperatura} </h1>
-                            <span>ºC</span>
+                            <span className='degress'>º</span>
                         </div>
-                        <div className='weather-description'> {weatherData.description} </div>
-                        <div className='weather-hour-box'>
-                            <div className="weather-hour">
-                                {h}:{m}
-                            </div>
-                            <button className='reload-weather'
-                                onClick={() => { reloadWeatherData() }}
-                            >
-                                <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 17.6328C10 17.6328 14.6507 10.1847 19.5 8.32244C23.8748 6.64242 27.192 6.47787 31.5 8.32244C36.0259 10.2603 38.2715 13.0229 40 17.6328C41.6311 21.9829 41.7174 25.2125 40 29.5293C38.2345 33.9671 35.9043 36.4751 31.5 38.3224C27.1785 40.1351 23.8883 39.9669 19.5 38.3224C14.7662 36.5485 10 29.5293 10 29.5293" stroke="black" strokeWidth="5"/>
-                                    <path d="M6.86236 11.6779L18.9562 16.4203L8.80226 24.5226L6.86236 11.6779Z" fill="black"/>
-                                </svg>
-                            </button>
+                    </div>
+                    <div className='weather-description'> {weatherData.description} </div>
+                    <div className='weather-hour-box'>
+                        <div className="weather-hour">
+                            {h}:{m}
                         </div>
-                        {/* <span>Em manutenção</span> */}
+                        <button className='reload-weather'
+                            onClick={() => { reloadWeatherData() }}
+                        >
+                            <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 17.6328C10 17.6328 14.6507 10.1847 19.5 8.32244C23.8748 6.64242 27.192 6.47787 31.5 8.32244C36.0259 10.2603 38.2715 13.0229 40 17.6328C41.6311 21.9829 41.7174 25.2125 40 29.5293C38.2345 33.9671 35.9043 36.4751 31.5 38.3224C27.1785 40.1351 23.8883 39.9669 19.5 38.3224C14.7662 36.5485 10 29.5293 10 29.5293" stroke="black" strokeWidth="5"/>
+                                <path d="M6.86236 11.6779L18.9562 16.4203L8.80226 24.5226L6.86236 11.6779Z" fill="black"/>
+                            </svg>
+                        </button>
+                    </div>
+                    {/* <span>Em manutenção</span> */}
                 </div>
             }
             <Scene data={weatherData} day={dayOrNight(formatedSunRiseAndSet)} />
