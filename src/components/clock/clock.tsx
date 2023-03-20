@@ -64,7 +64,7 @@ export const Clock = () => {
                                 return (
                                     <span className="number" style={n.styleSpan}>
                                         <b style={n.styleB}>
-                                            {n.text == '0' ? '12' : n.text}
+                                            {n.text === '0' ? '12' : n.text}
                                         </b>
                                     </span>
                                 )
