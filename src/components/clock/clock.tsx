@@ -23,6 +23,19 @@ export const Clock = () => {
         updateHour()
     }, [])
 
+    const numbers = [];
+    for (let n = 0; n < 12; n ++) {
+        numbers[n] = {
+            text: `${n}`,
+            styleSpan: {
+                transform: `rotate(${30 * n}deg)`
+            },
+            styleB: {
+                transform: `rotate(${-(30 * n)}deg)`
+            }
+        }
+    }
+
     // variaveis que transformam o orario em string
     let hs = hour.toString()
     let ms = min.toString()
@@ -46,18 +59,17 @@ export const Clock = () => {
                     <div className="m" style={{ transform: `rotate(${6 * min + 270}deg)` }}></div>
                     <div className="h" style={{ transform: `rotate(${30 * hour + 270}deg)` }}></div>
                     <div className="numbers">
-                        <span> <b>12</b> </span>
-                        <span> <b>1</b> </span>
-                        <span> <b>2</b> </span>
-                        <span> <b>3</b> </span>
-                        <span> <b>4</b> </span>
-                        <span> <b>5</b> </span>
-                        <span> <b>6</b> </span>
-                        <span> <b>7</b> </span>
-                        <span> <b>8</b> </span>
-                        <span> <b>9</b> </span>
-                        <span> <b>10</b> </span>
-                        <span> <b>11</b> </span>
+                        {
+                            numbers.map(n => {
+                                return (
+                                    <span className="number" style={n.styleSpan}>
+                                        <b style={n.styleB}>
+                                            {n.text == '0' ? '12' : n.text}
+                                        </b>
+                                    </span>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>

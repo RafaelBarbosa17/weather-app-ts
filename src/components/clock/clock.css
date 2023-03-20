@@ -1,6 +1,5 @@
 
 .Clock {
-    margin: 10px auto;
     z-index: 10;
     height: max-content;
     background-color: var(--bg-color);
@@ -92,81 +91,8 @@
     font-weight: 600;
 }
 
-.numbers span b {
-    display: inline-block;
+@media screen and (max-width: 580px) {
+    .Clock {
+        background-color: transparent;
+    }
 }
-
-.numbers span:nth-child(1) b {
-    transform: rotate(0deg);
-}
-.numbers span:nth-child(2) b {
-    transform: rotate(-30deg);
-}
-.numbers span:nth-child(3) b {
-    transform: rotate(-60deg);
-}
-.numbers span:nth-child(4) b {
-    transform: rotate(-90deg);
-}
-.numbers span:nth-child(5) b {
-    transform: rotate(-120deg);
-}
-.numbers span:nth-child(6) b {
-    transform: rotate(-150deg);
-}
-.numbers span:nth-child(7) b {
-    transform: rotate(-180deg);
-}
-.numbers span:nth-child(8) b {
-    transform: rotate(-210deg);
-}
-.numbers span:nth-child(9) b {
-    transform: rotate(-240deg);
-}
-.numbers span:nth-child(10) b {
-    transform: rotate(-270deg);
-}
-.numbers span:nth-child(11) b {
-    transform: rotate(-300deg);
-}
-.numbers span:nth-child(12) b {
-    transform: rotate(-330deg);
-}
-
-.numbers span:nth-child(1) {
-    transform: rotate(0deg);
-}
-.numbers span:nth-child(2) {
-    transform: rotate(30deg);
-}
-.numbers span:nth-child(3) {
-    transform: rotate(60deg);
-}
-.numbers span:nth-child(4) {
-    transform: rotate(90deg);
-}
-.numbers span:nth-child(5) {
-    transform: rotate(120deg);
-}
-.numbers span:nth-child(6) {
-    transform: rotate(150deg);
-}
-.numbers span:nth-child(7) {
-    transform: rotate(180deg);
-}
-.numbers span:nth-child(8) {
-    transform: rotate(210deg);
-}
-.numbers span:nth-child(9) {
-    transform: rotate(240deg);
-}
-.numbers span:nth-child(10) {
-    transform: rotate(270deg);
-}
-.numbers span:nth-child(11) {
-    transform: rotate(300deg);
-}
-.numbers span:nth-child(12) {
-    transform: rotate(330deg);
-}
-

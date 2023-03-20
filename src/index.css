@@ -22,20 +22,35 @@ body {
 
 .App {
     width: 100%;
-    height: min-content;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    padding: 1rem;
 }
 
 .container {
-    width: 80%;
+    width: 100%;
     height: min-content;
-    /* background-color: #cfcfcfad; */
     padding: 2rem;
     border-radius: 2rem;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+@media screen and (max-width: 580px) {
+    .App {
+        height: min-content;
+        padding: 2rem;
+    }
+    .container {
+        background-color: var(--bg-color);
+        width: min-content;
+        height: min-content;
+        margin: auto;
+        padding: 0;
+    }
 }

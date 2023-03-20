@@ -5,7 +5,8 @@ import { Icon } from './Icon';
 import { Scene } from './background-scene/Scene';
 import { dayOrNight } from './DayOrNight';
 import { MdLocationOn } from 'react-icons/md';
-import { IoReloadCircle } from 'react-icons/io5'
+import { IoReloadCircle, IoWater } from 'react-icons/io5';
+import { IoMdCloud } from 'react-icons/io';
 import { SunRiseAndSet } from './SunRiseAndSet/SunRiseAndSet';
 import './weather.css'
 
@@ -16,6 +17,8 @@ interface WeatherData {
 }
 interface WeatherMain {
     temp: number;
+    feels_like: number;
+    humidity: number
 }
 interface HourDate {
     hour: number,
@@ -55,7 +58,8 @@ export const Weather = () => { //eslint-disable-line
     // função executa chamada de api conforme os dados de latitude e longitude
     // e retorna os dados em formato JSON passando os para os estados dinâmicos
     const getWeatherData = async (lat:number, long:number) => {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=pt_br&appid=${apiKey}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=pt_br&appid=${apiKey}&units=metric`);
+
         const data = await response.json();
         setWeather(data)
         // dataMain é igual a propriedade main de data
@@ -74,7 +78,9 @@ export const Weather = () => { //eslint-disable-line
         })
         setWeatherIcon(weatherData)
         setTempWeather({
-            temp: dataMain.temp
+            temp: dataMain.temp,
+            feels_like: dataMain.feels_like,
+            humidity: dataMain.humidity
         })
         setHourDate({
             hour: new Date().getHours(),
@@ -110,7 +116,6 @@ export const Weather = () => { //eslint-disable-line
     let m = hourDate.min < 10 ? `0${hourDate.min}` : hourDate.min;
 
     // transforma a temperatura em graus celsius
-    let temperatura = Math.round(tempWeather.temp - 273.15);
     let sunrise = new Date(sunRiseAndSet.sunrise * 1000);
     let sunset = new Date(sunRiseAndSet.sunset * 1000);
 
@@ -134,7 +139,7 @@ export const Weather = () => { //eslint-disable-line
                 <div className="Weather">
                     <div className="weather-data">
                         <div className="weather-data-layer-top">
-                            <h1 className="weather-degress">{temperatura} <span className='degress-icon'>º</span> </h1>
+                            <h1 className="weather-degress">{Math.round(tempWeather.temp)} <span className='degress-icon'>º</span> </h1>
                             <Icon icon={weatherIcon} day={formatedSunRiseAndSet} />
                         </div>
                         <p className='weather-data-description'> {weatherData.description} </p>
@@ -142,6 +147,22 @@ export const Weather = () => { //eslint-disable-line
                             <MdLocationOn className='city-location-icon'/> 
                             {weather.name}
                         </p>
+                        <div className="other-info">
+                            <div className="humidity-box">
+                                <div className="humidity-item">
+                                    <IoWater className='humidity-icon'/>
+                                    <span className="humidity"> {tempWeather.humidity}% </span>
+                                </div>
+                                <p className='humidity-legend'>Umidade</p>
+                            </div>
+                            <div className="info-clouds-box">
+                                <div className="info-cloud-item">
+                                    <IoMdCloud className='info-cloud-icon'/>
+                                    <span className="info-cloud"> {weather.clouds.all}% </span>
+                                </div>
+                                <p className="info-cloud-legend">Nuvens</p>
+                            </div>
+                        </div>
                         <div className="weather-data-layer-bottom">
                             <h3 className="weather-time">
                                 {h}:{m}

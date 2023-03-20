@@ -11,11 +11,11 @@ export const Clouds = (props: {limit: number, img: string}) => {
     const cloudEffect = () => {
         const top = Math.random() * 150;
         const width = 300 + top;
-        const time = 4 * (top * 10) * 60;
+        const time = (Math.random() * (60 - 30) + 30);
         const cloudsStyle = {
             width: `${width}px`,
             height: 'auto',
-            animation: `cloud ${time}ms linear infinite`,
+            animation: `cloud ${time}s linear infinite`,
             top: `${top}%`,
             right: `-100%`,
         }

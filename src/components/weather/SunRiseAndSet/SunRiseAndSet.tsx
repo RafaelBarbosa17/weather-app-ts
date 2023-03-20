@@ -21,12 +21,12 @@ export const SunRiseAndSet = (props: {sras: SAS}) => {
     const f = formatedHour;
 
     const timeSunInSky:number = props.sras.sunsetHour - props.sras.sunriseHour;
-
-    const hour = new Date().getHours()
+    console.log(timeSunInSky)
+    const hour = new Date().getHours();
 
     const sunInSky = {
         height: '100%',
-        width: `${100 / timeSunInSky * (timeSunInSky - hour)}%`
+        width: `${100 / timeSunInSky * (hour - props.sras.sunriseHour)}%`
     }
 
     return (

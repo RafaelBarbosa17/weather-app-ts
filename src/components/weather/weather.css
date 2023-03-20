@@ -1,6 +1,5 @@
 
 .Weather {
-    margin: 10px auto;
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -55,6 +54,36 @@
 
 .city-location {
     font-size: 1rem;
+}
+
+.other-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.humidity-box, .info-clouds-box {
+    padding: .5rem;
+}
+
+.humidity-item , .info-cloud-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.humidity-icon, .info-cloud-icon {
+    width: 1.5rem;
+    height: auto;
+}
+
+.humidity, .info-cloud {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.humidity-legend, .info-cloud-legend {
+    font-size: .8rem;
 }
 
 .reload-button {
@@ -117,5 +146,11 @@
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .weather-data {
+        background-color: transparent;
     }
 }
