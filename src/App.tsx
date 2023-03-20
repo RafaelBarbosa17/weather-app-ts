@@ -7,8 +7,10 @@ import './index.css'
 export const App = () => {
   return (
     <div className="App">
-        <Weather />
+      <div className="container">
         <Clock />
+        <Weather />
+      </div>
     </div>
   );
 }

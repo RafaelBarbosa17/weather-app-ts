@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react';
 import { Loading } from './loading/loading';
 import { Icon } from './Icon';
 import { Scene } from './background-scene/Scene';
-import './weather.css'
 import { dayOrNight } from './DayOrNight';
+import { MdLocationOn } from 'react-icons/md';
+import { IoReloadCircle } from 'react-icons/io5'
+import { SunRiseAndSet } from './SunRiseAndSet/SunRiseAndSet';
+import './weather.css'
 
 interface WeatherData {
     main: string;
@@ -23,13 +26,26 @@ interface SunsetAndSunrise {
     sunset: number
 }
 
+interface Clouds {
+    all: number
+}
+
+interface Weather {
+    clouds: Clouds;
+    weather: WeatherData;
+    main: WeatherMain;
+    sys: SunsetAndSunrise
+    name: string;
+}
+
 // chave da api
 const apiKey:string = (process.env.REACT_APP_SECRET_API_KEY as string)
 
 export let formatedSunRiseAndSet: any;
 
-export const Weather = () => {
+export const Weather = () => { //eslint-disable-line
     const [loading, setLoading] = useState(true);
+    const [weather, setWeather] = useState<Weather>({} as Weather);
     const [weatherData, setWeatherData] = useState<WeatherData>({} as WeatherData);
     const [tempWeather, setTempWeather] = useState<WeatherMain>({} as WeatherMain);
     const [sunRiseAndSet, setSunRiseAndSet] = useState<SunsetAndSunrise>({} as SunsetAndSunrise)
@@ -41,6 +57,7 @@ export const Weather = () => {
     const getWeatherData = async (lat:number, long:number) => {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=pt_br&appid=${apiKey}`);
         const data = await response.json();
+        setWeather(data)
         // dataMain é igual a propriedade main de data
         const dataMain = data.main as WeatherMain;
         console.log(data)
@@ -115,31 +132,29 @@ export const Weather = () => {
                 <Loading /> :
 
                 <div className="Weather">
-                    <div className="weather-box">
-                        <Icon icon={weatherIcon} day={dayOrNight(formatedSunRiseAndSet)} />
-                        <div className="weather-degress">
-                            <h1 className="weather"> {temperatura} </h1>
-                            <span className='degress'>º</span>
+                    <div className="weather-data">
+                        <div className="weather-data-layer-top">
+                            <h1 className="weather-degress">{temperatura} <span className='degress-icon'>º</span> </h1>
+                            <Icon icon={weatherIcon} day={formatedSunRiseAndSet} />
+                        </div>
+                        <p className='weather-data-description'> {weatherData.description} </p>
+                        <p className="city-location"> 
+                            <MdLocationOn className='city-location-icon'/> 
+                            {weather.name}
+                        </p>
+                        <div className="weather-data-layer-bottom">
+                            <h3 className="weather-time">
+                                {h}:{m}
+                            </h3>
+                            <button onClick={reloadWeatherData} className="reload-button">
+                                <IoReloadCircle className="reload-icon"/>
+                            </button>
                         </div>
                     </div>
-                    <div className='weather-description'> {weatherData.description} </div>
-                    <div className='weather-hour-box'>
-                        <div className="weather-hour">
-                            {h}:{m}
-                        </div>
-                        <button className='reload-weather'
-                            onClick={() => { reloadWeatherData() }}
-                        >
-                            <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 17.6328C10 17.6328 14.6507 10.1847 19.5 8.32244C23.8748 6.64242 27.192 6.47787 31.5 8.32244C36.0259 10.2603 38.2715 13.0229 40 17.6328C41.6311 21.9829 41.7174 25.2125 40 29.5293C38.2345 33.9671 35.9043 36.4751 31.5 38.3224C27.1785 40.1351 23.8883 39.9669 19.5 38.3224C14.7662 36.5485 10 29.5293 10 29.5293" stroke="black" strokeWidth="5"/>
-                                <path d="M6.86236 11.6779L18.9562 16.4203L8.80226 24.5226L6.86236 11.6779Z" fill="black"/>
-                            </svg>
-                        </button>
-                    </div>
-                    {/* <span>Em manutenção</span> */}
+                    <SunRiseAndSet sras={formatedSunRiseAndSet} />
                 </div>
             }
-            <Scene data={weatherData} day={dayOrNight(formatedSunRiseAndSet)} />
+            <Scene data={weatherData} clouds={weather.clouds} day={dayOrNight(formatedSunRiseAndSet)} />
 
         </>
     )

@@ -7,7 +7,6 @@ import { Drizzle } from './conditions/Drizzle';
 import { RainDaySun, RainNightMoon, RainDay, RainNight, RainSnowDay, RainSnowNight } from './conditions/Rain';
 import { CloudsMoon, CloudsMoonHeavy, CloudsMoonLight, CloudsSun, CloudsSunHeavy, CloudsSunLight } from './conditions/Clouds';
 import { Snow } from './conditions/Snow';
-import { SceneImg } from './Scene-Image/SceneImage';
 
 // tipagem
 interface Data {
@@ -15,8 +14,12 @@ interface Data {
     main: string
 }
 
+interface Clouds {
+    all: number
+}
+
 // o componente Scene tem praticamente as mesma função que o componente Icons porém Scene gera cerios de acordo com o clima atual e o horário
-export const Scene = (prop: {data: Data, day: boolean}) => {
+export const Scene = (prop: {data: Data, day: boolean, clouds: Clouds}) => {
     //console.log(prop.data)
     const rainDefinition = () => {
         if (prop.data.id >= 500 && prop.data.id < 520 && prop.data.id !== 511) {
@@ -40,20 +43,20 @@ export const Scene = (prop: {data: Data, day: boolean}) => {
     const cloudsDefinition = () => {
         if (prop.data.id === 801) {
             if (prop.day) {
-                return <CloudsSun />
+                return <CloudsSun all={prop.clouds.all} />
             }
-            return <CloudsMoon />
+            return <CloudsMoon all={prop.clouds.all} />
         } else if (prop.data.id === 802) {
             if (prop.day) {
-                return <CloudsSunLight />
+                return <CloudsSunLight all={prop.clouds.all} />
             }
-            return <CloudsMoonLight />
+            return <CloudsMoonLight all={prop.clouds.all} />
             // return 'Nuvem Leve'
         } else if (prop.data.id === 803 || prop.data.id === 804) {
             if (prop.day) {
-                return <CloudsSunHeavy />
+                return <CloudsSunHeavy all={prop.clouds.all} />
             }
-            return <CloudsMoonHeavy />
+            return <CloudsMoonHeavy all={prop.clouds.all} />
         }
     }
     
@@ -71,10 +74,6 @@ export const Scene = (prop: {data: Data, day: boolean}) => {
     return (
         <div className="background-scene">
             {currentWeather}
-            <div className="scene-box">
-                <SceneImg weatherCondition={prop.data.main} />
-                {/* <img className='scene-img' src="./imgs/cenario.svg" alt="cenario" /> */}
-            </div>
         </div>
     )
 }

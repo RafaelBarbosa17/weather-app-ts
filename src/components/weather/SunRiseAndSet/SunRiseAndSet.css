@@ -1,0 +1,77 @@
+
+.SunRiseAndSet {
+    background-color: var(--bg-color);
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+.sras-title {
+    font-size: 1.5rem;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.times {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.sunrise, .sunset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sunrise-icon, .sunset-icon {
+    width: 2rem;
+    height: auto;
+    fill: black;
+}
+
+.sras-time {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.grafic-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    min-width: 150px;
+    height: 100px;
+    justify-content: flex-start;
+    border-radius: 150px 150px 0 0;
+    overflow: hidden;
+    background-color: #c7c7c7;
+}
+
+.grafic-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, #77f0f8, #77f0f8, #c7c7c7);
+}
+.grafic-item svg {
+    position: absolute;
+    transform: translate(15px, -5px);
+    width: 1.5rem;
+    height: auto;
+    fill: orangered;
+    stroke-width: .2px;
+    stroke: black;
+    animation: grafic-item-rotate 10s linear infinite;
+}
+
+@keyframes grafic-item-rotate {
+    0% {
+        transform: translate(12px, -5px) rotate(0deg);
+    }
+    100% {
+        transform: translate(12px, -5px) rotate(360deg);
+    }
+}
