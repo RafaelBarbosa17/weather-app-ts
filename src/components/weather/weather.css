@@ -84,6 +84,7 @@
 
 .humidity-legend, .info-cloud-legend {
     font-size: .8rem;
+    text-align: center;
 }
 
 .reload-button {

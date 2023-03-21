@@ -62,7 +62,7 @@ export const Clock = () => {
                         {
                             numbers.map(n => {
                                 return (
-                                    <span className="number" style={n.styleSpan}>
+                                    <span className="number" style={n.styleSpan} key={`number-${n.text}`}>
                                         <b style={n.styleB}>
                                             {n.text === '0' ? '12' : n.text}
                                         </b>

@@ -15,9 +15,9 @@ export const Clouds = (props: {limit: number, img: string}) => {
         const cloudsStyle = {
             width: `${width}px`,
             height: 'auto',
-            animation: `cloud ${time}s linear infinite`,
             top: `${top}%`,
-            right: `-100%`,
+            animation: `cloud-move ${time}s linear infinite`,
+            filter: 'blur(4px)'
         }
         // retorna o objeto criado na chamada de função
         return cloudsStyle
@@ -25,7 +25,7 @@ export const Clouds = (props: {limit: number, img: string}) => {
     const cloudsData = [];
     // esse forloop gera as nuvens a serem mostradas na tela com um limite definido pelo prop limit
     // depois passa um objeto para cloudsData que armazena todo em um array
-    for (let c = 0; c <= props.limit / 5; c++) {
+    for (let c = 0; c <= props.limit / 2; c++) {
         cloudsData[c] = {
             className: 'cloud',
             key: `cloud-key-${c}`,
@@ -83,22 +83,16 @@ export const CloudsMoon = (props: {all: number}) => {
 }
 
 export const CloudsSunLight = (props: {all: number}) => {
-    const backgroundColorStyle = {
-        backgroundColor: '#d9d9d9'
-    }
     return (
-        <div className="CloudsSunLight scene-main" style={backgroundColorStyle}>
+        <div className="CloudsSunLight scene-main">
             <Clouds limit={props.all} img={'nuvem'} />
         </div>
     )
 }
 
 export const CloudsMoonLight = (props: {all: number}) => {
-    const backgroundColorStyle = {
-        backgroundColor: '#131212'
-    }
     return (
-        <div className="CloudsMoonLight scene-main" style={backgroundColorStyle}>
+        <div className="CloudsMoonLight scene-main">
             <Clouds limit={props.all} img={'nuvemnoite'} />
         </div>
     )

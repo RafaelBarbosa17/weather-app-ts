@@ -1,14 +1,11 @@
 
-import { SunOrMoon } from './SunOrMoon';
+import { CloudsMoon } from './Clouds';
 
 // Componente que gera um cenário com a lua em um céu limpo
-export const ClearMoon = () => {
-    const backgroundColorStyle = {
-        backgroundColor: '#a6dcdc'
-    }
+export const ClearMoon = (prop: {all: number}) => {
     return (
-        <div className="ClearMoon scene-main" style={backgroundColorStyle}>
-            <SunOrMoon />
+        <div className="ClearMoon scene-main">
+            <CloudsMoon all={prop.all} />
         </div>
     )
 }

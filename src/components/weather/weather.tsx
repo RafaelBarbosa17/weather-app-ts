@@ -29,17 +29,6 @@ interface SunsetAndSunrise {
     sunset: number
 }
 
-interface Clouds {
-    all: number
-}
-
-interface Weather {
-    clouds: Clouds;
-    weather: WeatherData;
-    main: WeatherMain;
-    sys: SunsetAndSunrise
-    name: string;
-}
 
 // chave da api
 const apiKey:string = (process.env.REACT_APP_SECRET_API_KEY as string)
@@ -48,7 +37,8 @@ export let formatedSunRiseAndSet: any;
 
 export const Weather = () => { //eslint-disable-line
     const [loading, setLoading] = useState(true);
-    const [weather, setWeather] = useState<Weather>({} as Weather);
+    const [clouds, setClouds] = useState(0);
+    const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState<WeatherData>({} as WeatherData);
     const [tempWeather, setTempWeather] = useState<WeatherMain>({} as WeatherMain);
     const [sunRiseAndSet, setSunRiseAndSet] = useState<SunsetAndSunrise>({} as SunsetAndSunrise)
@@ -61,7 +51,6 @@ export const Weather = () => { //eslint-disable-line
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=pt_br&appid=${apiKey}&units=metric`);
 
         const data = await response.json();
-        setWeather(data)
         // dataMain é igual a propriedade main de data
         const dataMain = data.main as WeatherMain;
         console.log(data)
@@ -71,7 +60,7 @@ export const Weather = () => { //eslint-disable-line
                 description: obj.description,
                 id: obj.id
                 // main: 'Rain',
-                // description: 'Chovendo pacarai',
+                // description: 'Nuvens',
                 // id: 520
             })
             return obj
@@ -90,6 +79,8 @@ export const Weather = () => { //eslint-disable-line
             sunrise: data.sys.sunrise,
             sunset: data.sys.sunset
         })
+        setClouds(data.clouds.all)
+        setCity(data.name)
         //console.log(weatherData)
         setLoading(false)
     }
@@ -145,7 +136,7 @@ export const Weather = () => { //eslint-disable-line
                         <p className='weather-data-description'> {weatherData.description} </p>
                         <p className="city-location"> 
                             <MdLocationOn className='city-location-icon'/> 
-                            {weather.name}
+                            {city}
                         </p>
                         <div className="other-info">
                             <div className="humidity-box">
@@ -158,7 +149,7 @@ export const Weather = () => { //eslint-disable-line
                             <div className="info-clouds-box">
                                 <div className="info-cloud-item">
                                     <IoMdCloud className='info-cloud-icon'/>
-                                    <span className="info-cloud"> {weather.clouds.all}% </span>
+                                    <span className="info-cloud"> {clouds}% </span>
                                 </div>
                                 <p className="info-cloud-legend">Nuvens</p>
                             </div>
@@ -175,7 +166,7 @@ export const Weather = () => { //eslint-disable-line
                     <SunRiseAndSet sras={formatedSunRiseAndSet} />
                 </div>
             }
-            <Scene data={weatherData} clouds={weather.clouds} day={dayOrNight(formatedSunRiseAndSet)} />
+            <Scene data={weatherData} clouds={clouds} day={dayOrNight(formatedSunRiseAndSet)} />
 
         </>
     )

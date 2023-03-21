@@ -9,7 +9,6 @@ interface SAS {
     sunsetMin: number
 }
 
-
 export const SunRiseAndSet = (props: {sras: SAS}) => {
 
     const formatedHour = (n: number) => {
@@ -21,7 +20,7 @@ export const SunRiseAndSet = (props: {sras: SAS}) => {
     const f = formatedHour;
 
     const timeSunInSky:number = props.sras.sunsetHour - props.sras.sunriseHour;
-    console.log(timeSunInSky)
+    // console.log(timeSunInSky)
     const hour = new Date().getHours();
 
     const sunInSky = {

@@ -5,7 +5,7 @@ import { Clouds } from "./Clouds";
 // RainEffect é um componente que gera o efeito de chuva na tela do usuario
 // recebe três props time para definir qual clima será renderizado,
 // tp para definir o tipo de chuva e img para definir qual tipo de nuvem será mostrada
-const RainEffect = (prop: { time: string, tp: string, img: string }) => {
+export const RainEffect = (prop: { time: string, tp: string, img: string, clouds: number }) => {
     const w = document.body.clientWidth + 100;
     const rainStyleEffect = () => {
     const pos = (Math.random() * w) - 100;
@@ -32,8 +32,9 @@ const RainEffect = (prop: { time: string, tp: string, img: string }) => {
         // prop.time é usado aqui para definir um nome de classe para ser usada no css
         // prop.img passa para src um valor e src busca esse valor no diretorio definido
         <div className={`rain-effects ${prop.time}`}>
-            <img className="nuvens nuvens-1" src={`./imgs/grupo${prop.img}.svg`} alt="" />
-            <img className="nuvens nuvens-2" src={`./imgs/grupo${prop.img}.svg`} alt="" />
+            <img className="nuvens nuvens-1" src={`./imgs/grupo${prop.img}.svg`} alt="grupo de nuvens" />
+            <img className="nuvens nuvens-2" src={`./imgs/grupo${prop.img}.svg`} alt="grupo de nuvens" />
+            <Clouds limit={prop.clouds} img={prop.img} />
             { rainDatas.map(rainData => {
                 // rainDatas é mapeado e retorna todos os objetos criando elementos para serem renderizados
                 return (
@@ -49,74 +50,70 @@ const RainEffect = (prop: { time: string, tp: string, img: string }) => {
 }
 
 // assim como clouds todos os elementos abaixo são variações de um mesmo elemento, com base na necessidade
-export const RainDaySun = () => {
+export const RainDaySun = (prop: {clouds: number}) => {
     const backgroundColorStyle = {
         backgroundColor: '#a8cbcb'
     }
     return (
         <div className="RainDaySun scene-main" style={backgroundColorStyle}>
-            <RainEffect time={'daysun'} tp={'rain'} img={'nuvens'} />
-            <Clouds limit={3} img={'nuvem'} />
+            <RainEffect time={'daysun'} tp={'rain'} img={'nuvem'} clouds={prop.clouds} />
             <SunOrMoon />
         </div>
     )
 }
 
-export const RainNightMoon = () => {
+export const RainNightMoon = (prop: {clouds: number}) => {
     const backgroundColorStyle = {
         backgroundColor: '#000'
     }
     return (
         <div className="RainNightMoon scene-main" style={backgroundColorStyle}>
-            <RainEffect time={'nightmoon'} tp={'rain'} img={'nuvensnoite'} />
-            <Clouds limit={3} img={'nuvemnoite'} />
+            <RainEffect time={'nightmoon'} tp={'rain'} img={'nuvemnoite'}  clouds={prop.clouds}/>
             <SunOrMoon />
         </div>
     )
 }
 
-export const RainDay = () => {
+export const RainDay = (prop: {clouds: number}) => {
     const backgroundColorStyle = {
         backgroundColor: '#c1c0c0'
     }
     return (
         <div className="RainDay scene-main" style={backgroundColorStyle}>
-            <RainEffect time={'day'} tp={'rain'} img={'nuvenspesada'} />
-            <Clouds limit={6} img={'nuvemdiapesada'} />
+            <RainEffect time={'day'} tp={'rain'} img={'nuvemdiapesada'} clouds={prop.clouds}/>
         </div>
     )
 }
 
-export const RainNight = () => {
+export const RainNight = (prop: {clouds: number}) => {
     const backgroundColorStyle = {
         backgroundColor: '#000000'
     }
     return (
         <div className="RainNight scene-main" style={backgroundColorStyle}>
-            <RainEffect time={'night'} tp={'rain'} img={'nuvensnoitepesada'} />
-            <Clouds limit={6} img={'nuvemdiapesada'} />
+            <RainEffect time={'night'} tp={'rain'} img={'nuvemnoitepesada'} clouds={prop.clouds}/>
         </div>
     )
 }
 
-export const RainSnowDay = () => {
+export const RainSnowDay = (prop: {clouds: number}) => {
     const backgroundColorStyle = {
         backgroundColor: '#ffffff'
     }
     return (
         <div className="RainSnow scene-main" style={backgroundColorStyle}>
-            <RainEffect time={'snowday'} tp={'snow'} img={'nuvens'} />
+            <RainEffect time={'snowday'} tp={'snow'} img={'nuvem'} clouds={prop.clouds}/>
         </div>
     )
 }
 
-export const RainSnowNight = () => {
+export const RainSnowNight = (prop: {clouds: number}) => {
     const backgroundColorStyle = {
         backgroundColor: '#000'
     }
     return (
         <div className="RainSnow scene-main" style={backgroundColorStyle}>
-            <RainEffect time={'snownight'} tp={'snow'} img={'nuvensnoite'} />
+            <RainEffect time={'snownight'} tp={'snow'} img={'nuvemnoite'} clouds={prop.clouds}/>
         </div>
     )
 }

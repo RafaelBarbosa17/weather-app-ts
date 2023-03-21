@@ -14,62 +14,58 @@ interface Data {
     main: string
 }
 
-interface Clouds {
-    all: number
-}
-
 // o componente Scene tem praticamente as mesma função que o componente Icons porém Scene gera cerios de acordo com o clima atual e o horário
-export const Scene = (prop: {data: Data, day: boolean, clouds: Clouds}) => {
-    //console.log(prop.data)
+export const Scene = (props: {data: Data, day: boolean, clouds: number}) => {
+    //console.log(props.data)
     const rainDefinition = () => {
-        if (prop.data.id >= 500 && prop.data.id < 520 && prop.data.id !== 511) {
-            if (prop.day) {
-                return <RainDaySun />
+        if (props.data.id >= 500 && props.data.id < 520 && props.data.id !== 511) {
+            if (props.day) {
+                return <RainDaySun clouds={props.clouds} />
             }
-            return <RainNightMoon />
-        } else if (prop.data.id === 511) {
-            if (prop.day) {
-                return <RainSnowDay />
+            return <RainNightMoon  clouds={props.clouds}/>
+        } else if (props.data.id === 511) {
+            if (props.day) {
+                return <RainSnowDay  clouds={props.clouds}/>
             }
-            return <RainSnowNight />
-        } else if (prop.data.id >= 520) {
-            if (prop.day) {
-                return <RainDay />
+            return <RainSnowNight  clouds={props.clouds}/>
+        } else if (props.data.id >= 520) {
+            if (props.day) {
+                return <RainDay  clouds={props.clouds}/>
             }
-            return <RainNight />
+            return <RainNight  clouds={props.clouds}/>
         }
     }
 
     const cloudsDefinition = () => {
-        if (prop.data.id === 801) {
-            if (prop.day) {
-                return <CloudsSun all={prop.clouds.all} />
+        if (props.data.id === 801) {
+            if (props.day) {
+                return <CloudsSun all={props.clouds} />
             }
-            return <CloudsMoon all={prop.clouds.all} />
-        } else if (prop.data.id === 802) {
-            if (prop.day) {
-                return <CloudsSunLight all={prop.clouds.all} />
+            return <CloudsMoon all={props.clouds} />
+        } else if (props.data.id === 802) {
+            if (props.day) {
+                return <CloudsSunLight all={props.clouds} />
             }
-            return <CloudsMoonLight all={prop.clouds.all} />
+            return <CloudsMoonLight all={props.clouds} />
             // return 'Nuvem Leve'
-        } else if (prop.data.id === 803 || prop.data.id === 804) {
-            if (prop.day) {
-                return <CloudsSunHeavy all={prop.clouds.all} />
+        } else if (props.data.id === 803 || props.data.id === 804) {
+            if (props.day) {
+                return <CloudsSunHeavy all={props.clouds} />
             }
-            return <CloudsMoonHeavy all={prop.clouds.all} />
+            return <CloudsMoonHeavy all={props.clouds} />
         }
     }
     
     const groupWeatherConditions = {
-        Clear: prop.day ? <ClearSun /> : <ClearMoon />,
-        Thunderstorm: <Thunderstorm day={prop.day} />,
-        Drizzle: <Drizzle day={prop.day} />,
+        Clear: props.day ? <ClearSun all={props.clouds}/> : <ClearMoon all={props.clouds}/>,
+        Thunderstorm: <Thunderstorm day={props.day} clouds={props.clouds} />,
+        Drizzle: <Drizzle day={props.day} clouds={props.clouds} />,
         Rain: rainDefinition(),
         Snow: <Snow />,
         Clouds: cloudsDefinition()
     }
 
-    let currentWeather = (groupWeatherConditions as any)[prop.data.main]
+    let currentWeather = (groupWeatherConditions as any)[props.data.main]
 
     return (
         <div className="background-scene">
