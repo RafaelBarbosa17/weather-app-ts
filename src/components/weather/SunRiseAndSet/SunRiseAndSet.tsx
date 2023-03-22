@@ -22,7 +22,6 @@ export const SunRiseAndSet = (props: {sras: SAS}) => {
     const timeSunInSky:number = props.sras.sunsetHour - props.sras.sunriseHour;
     // console.log(timeSunInSky)
     let hour = new Date().getHours();
-    hour = 10
     const sunInSky = {
         height: '100%',
         width: `${100 / timeSunInSky * (hour - props.sras.sunriseHour)}%`
